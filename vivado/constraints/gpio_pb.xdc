@@ -1,0 +1,8 @@
+set_property IOSTANDARD LVCMOS12 [get_ports {GPIO_PB_tri_i[3]}]
+set_property IOSTANDARD LVCMOS12 [get_ports {GPIO_PB_tri_i[2]}]
+set_property IOSTANDARD LVCMOS12 [get_ports {GPIO_PB_tri_i[1]}]
+set_property IOSTANDARD LVCMOS12 [get_ports {GPIO_PB_tri_i[0]}]
+set_property PACKAGE_PIN AB6 [get_ports {GPIO_PB_tri_i[3]}]
+set_property PACKAGE_PIN AB7 [get_ports {GPIO_PB_tri_i[2]}]
+set_property PACKAGE_PIN AB2 [get_ports {GPIO_PB_tri_i[1]}]
+set_property PACKAGE_PIN AC6 [get_ports {GPIO_PB_tri_i[0]}]

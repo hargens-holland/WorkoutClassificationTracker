@@ -1,0 +1,29 @@
+# Vivado writes its generated files with CRLF. Keep them byte-identical so the
+# IP package, block design, and project file stay valid for the tools.
+ip/mlp_controller_1_0/hdl/**       -text
+ip/mlp_controller_1_0/bd/**        -text
+ip/mlp_controller_1_0/xgui/**      -text
+ip/mlp_controller_1_0/drivers/**   -text
+ip/mlp_controller_1_0/example_designs/** -text
+*.xci      -text
+*.bd       -text
+*.xpr      -text
+*.xml      -text
+
+# Hand-written RTL and weights are LF and should stay that way.
+*.sv       text eol=lf
+*.coe      text eol=lf
+*.py       text eol=lf
+*.md       text eol=lf
+
+# Don't diff or line-ending-mangle binaries.
+*.pdf      binary
+*.key      binary
+*.gif      binary
+*.png      binary
+*.jpg      binary
+
+# Vivado reports are large generated text; collapse them in diffs and mark them
+# so GitHub's language stats reflect the actual source.
+vivado/reports/**  linguist-generated=true
+ip/mlp_controller_1_0/hdl/mlp_controller_slave_lite_v1_0_S00_AXI.v linguist-generated=true

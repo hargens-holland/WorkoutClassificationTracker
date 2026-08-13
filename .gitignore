@@ -1,0 +1,142 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# OS / editor
+# ─────────────────────────────────────────────────────────────────────────────
+.DS_Store
+._*
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Vivado — project output directories
+#
+# Vivado regenerates all of these from the .xpr, the block design, and the
+# sources in hdl/. None of it belongs in version control: the four directories
+# below came to ~520 MB on this project.
+# ─────────────────────────────────────────────────────────────────────────────
+*.cache/
+*.gen/
+*.hw/
+*.ioplanning/
+*.ip_user_files/
+*.runs/
+*.sim/
+.Xil/
+.jobs/
+
+# Keep curated implementation reports under vivado/reports/ (checked in
+# deliberately as evidence of timing closure and resource usage), but ignore
+# the raw multi-megabyte report dumps Vivado leaves in the run directories.
+*_methodology_drc_routed.rpt
+*_drc_routed.rpt
+*_drc_opted.rpt
+*_control_sets_placed.rpt
+*_io_placed.rpt
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Vivado — logs, journals, crash dumps
+# ─────────────────────────────────────────────────────────────────────────────
+vivado.jou
+vivado.log
+vivado_*.jou
+vivado_*.log
+vivado_*.str
+vivado_pid*.str
+*.backup.jou
+*.backup.log
+hs_err_pid*.log
+.Vivado_Synthesis.queue.rst
+.Vivado_Implementation.queue.rst
+.vivado.begin.rst
+.vivado.end.rst
+webtalk/
+tight_setup_hold_pins.txt
+dfx_runtime.txt
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Synthesis / implementation artifacts
+#
+# Checkpoints are large and machine-specific; bitstreams are rebuildable.
+# ─────────────────────────────────────────────────────────────────────────────
+*.dcp
+*.bit
+*.bin
+*.ltx
+*.mmi
+*.rbt
+*.sysdef
+*.hdf
+*.xsa
+*.pdi
+*.bif
+
+# Model binaries — downloaded, not committed. See models/README.md
+*.xmodel
+*.elf
+*.tflite
+*.pb
+*.onnx
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Generated / packaged IP
+#
+# ipshared/ and the generated netlists under an IP directory are reproduced by
+# Vivado when the block design is regenerated. The hand-written sources in
+# hdl/ are the real design.
+# ─────────────────────────────────────────────────────────────────────────────
+ipshared/
+*_sim_netlist.v
+*_sim_netlist.vhdl
+*_stub.v
+*_stub.vhdl
+*.veo
+*.vho
+*.sveo
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Simulation
+# ─────────────────────────────────────────────────────────────────────────────
+*.wdb
+*.wcfg
+*.vcd
+*.ghw
+xsim.dir/
+xvhdl.log
+xvlog.log
+xelab.log
+xsim*.log
+*.jou.bak
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PetaLinux / board images
+# ─────────────────────────────────────────────────────────────────────────────
+images/
+build/
+*.dtbo
+BOOT.BIN
+image.ub
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Python (PS-side software)
+# ─────────────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+*.egg-info/
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Original source archives and unpacked working copies
+#
+# These are the raw handoff artifacts this repo was assembled from. The files
+# that matter have been copied into hdl/, vivado/, software/ and docs/.
+# Kept out of git for size; safe to delete locally once you're happy with the
+# curated tree.
+# ─────────────────────────────────────────────────────────────────────────────
+*.zip
+final_no_dpu/
+AUP-ZU3-Potential Simplified/
+*.docx
