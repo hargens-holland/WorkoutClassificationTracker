@@ -1,23 +1,8 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 03/22/2026 09:53:14 PM
-// Design Name: 
+////////////////////////////////////////////////////////////////////////////////
 // Module Name: mlp_classifier
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+// Create Date: 03/22/2026 09:53:14 PM
+////////////////////////////////////////////////////////////////////////////////
 
 
 module mlp_classifier(
@@ -380,9 +365,6 @@ module mlp_classifier(
 
             LAYER1_WAIT_MAC: begin
                 valid_mac_inputs = 1'b0;
-
-                //layer1_outputs[layer1_neuron_count] = (layer1_input_count == 7'd35) & valid_mac_out ? acc_out : 8'd0;
-                //current_layer1_mac_out = valid_mac_out ? acc_out : 21'd0;
 
                 mac1_next_input = ~(layer1_input_count == 7'd33) & valid_mac_out;
                 rst_layer1_input_cnt = (layer1_input_count == 7'd33) & valid_mac_out;

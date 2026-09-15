@@ -1,23 +1,8 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+////////////////////////////////////////////////////////////////////////////////
+// Module Name: mac
 // Create Date: 03/12/2026 04:48:48 PM
-// Design Name: 
-// Module Name: mac_unit
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
 module mac(
@@ -48,7 +33,6 @@ module mac(
         valid_mac_inputs_1 <= valid_mac_inputs;
         valid_mac_inputs_2 <= valid_mac_inputs_1;
         valid_mac_inputs_3 <= valid_mac_inputs_2;
-        //valid_mac_inputs_4 <= valid_mac_inputs_3;
     end
 
     assign valid_mac_out = ~(valid_mac_inputs_1 | valid_mac_inputs_2 | valid_mac_inputs_3);
