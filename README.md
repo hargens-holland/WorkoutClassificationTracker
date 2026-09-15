@@ -100,8 +100,8 @@ tractable:
   separate arithmetic stage.
 
 The measured cost of quantization was an accuracy drop, recovered by tuning
-classification thresholds in PS-side post-processing. Final accuracy: **90%**
-against a >85% target.
+classification thresholds in PS-side post-processing. Final accuracy: **90%** (final
+report) against a >85% target.
 
 ## Hardware implementation
 
@@ -154,8 +154,7 @@ and each synthesis iteration took hours. Pose estimation moved to the PS and the
 fabric was given the workload it was actually well suited to. The routed reports
 are in [`vivado/reports/`](vivado/reports/).
 
-This is the project's central engineering result, and both halves are measured on
-real silicon.
+This is the project's central engineering result.
 
 ## Results
 
@@ -169,8 +168,7 @@ real silicon.
 The FPS shortfall and the rep-counting error are both PS-side. The fabric
 classifier consumes roughly 1% of the per-frame budget; the system is bounded by
 pose estimation on the ARM cores, which is precisely the workload the DPU was
-meant to absorb. Rep counting is a threshold-based state machine in Python with
-no temporal smoothing, and 15% error reflects that.
+meant to absorb.
 
 ## Tech stack
 
@@ -211,28 +209,13 @@ docs/                       Architecture, register map, final report, poster
 `mlp_controller_slave_lite_v1_0_S00_AXI.v` (register packing, start/done
 handshake, classifier instantiation) is ours.
 
-## Building
+## Build and bring-up
 
-Vivado 2025.2 and a Zynq UltraScale+ ZU3EG board are required.
-
-```bash
-# 1. Open the project
-vivado vivado/workout_classifier.xpr
-
-# 2. Add the packaged classifier IP to the catalog, in the Tcl console:
-#      set_property ip_repo_paths ./ip [current_project]
-#      update_ip_catalog
-#    then generate the block design, synthesize, implement, write bitstream.
-
-# 3. Fetch the pretrained pose model (see models/README.md), then copy the
-#    bitstream, .hwh, software/ and models/ to the board and run:
-pip install tflite-runtime opencv-python-headless numpy
-python3 software/pulse_monitor.py
-```
-
-To retrain the classifier, regenerate `ip/mlp_controller_1_0/src/all_weights.coe`
-and rebuild — weights are baked into the BRAM at synthesis and are not writable
-at runtime.
+This repository is a record of the capstone design — the RTL, the packaged IP,
+the Vivado project sources, and the PS-side software. The full system was built,
+loaded, and debugged on the AUP-ZU3 board under Vivado 2025.2 and PYNQ; weights
+are baked into the BRAM at synthesis and the pretrained pose model is fetched
+separately (see [`models/README.md`](models/README.md)).
 
 ### Simulation
 
@@ -256,8 +239,8 @@ This is a cleaned-up capstone repository preserved as a portfolio piece.
   pretrained model — not original capstone code.
 - **The PS/PL seam did not converge during the capstone.** The delivered PS
   controller produced 36 OpenPose-shaped features against RTL expecting 34
-  MoveNet-shaped ones, with register offsets shifted to match. Both ends now
-  agree, and the fixes are itemized in
+  MoveNet-shaped ones, with register offsets shifted to match. The changes made in
+  this tree are itemized in
   [docs/architecture.md](docs/architecture.md#known-gaps).
 - **The results above are the team's measured numbers** from the final report,
   taken on the original design rather than on this cleaned-up tree. Figures

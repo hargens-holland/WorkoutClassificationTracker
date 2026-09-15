@@ -181,7 +181,7 @@ rebuilding the bitstream.
 
 Issues found while assembling this repository, and what was done about each.
 
-1. **Keypoint-count mismatch across the PS/PL seam.** *(fixed)* The RTL is built
+1. **Keypoint-count mismatch across the PS/PL seam.** The RTL is built
    for 17 keypoints (34 features, 272 bits, port named `movenet_data`). The PS
    controller as delivered decoded 18-keypoint OpenPose heatmaps and produced 36
    features, and its register offsets were shifted two words as a result — the
@@ -189,12 +189,12 @@ Issues found while assembling this repository, and what was done about each.
    side now produces 17 MoveNet keypoints and its register map is derived from
    the RTL.
 
-2. **Input-select typo.** *(fixed)* The `LAYER1_MAC` input multiplexer read
+2. **Input-select typo.** The `LAYER1_MAC` input multiplexer read
    `8'd83:` where the 0–33 sequence requires `8'd8:`, so feature byte 8 was never
    selected and that coordinate held a stale value through layer 1. All 34 case
    arms are now present with bit slices matching `index*8+7 : index*8`.
 
-3. **Coordinate scaling.** *(fixed)* The PS scaled normalized coordinates by 255
+3. **Coordinate scaling.** The PS scaled normalized coordinates by 255
    into `[0, 255]`, but the DSP reads each byte as `signed [7:0]`, so the upper
    half of the coordinate range arrived as negative values. The PS now scales by
    127.
