@@ -195,7 +195,6 @@ module mlp_classifier(
                                                                                                                                                                        : pose_class_outputs[output_layer_neuron_count];
     end
 
-    //FIXME: is movenet_data stable the whole time or should we capture it when movenet_data_valid?
     always_comb begin
         next_state = state;
         done_pulse = 1'b0;

@@ -4,7 +4,7 @@ movenet_pose.py — MoveNet single-pose estimation on the PS.
 Reconstructed after the capstone. The original team code ran pose estimation on
 the PS but that implementation was not preserved; this is a working
 implementation of the same stage, written against the public pretrained MoveNet
-model so the pipeline in this repository runs end to end.
+model.
 
 MoveNet SinglePose returns 17 keypoints as (y, x, score), normalized to its own
 square input. This module undoes the aspect-preserving letterbox so callers get

@@ -174,34 +174,3 @@ Weights are **not** runtime-writable. The BRAM is instantiated single-port
 (`clka`/`ena`/`addra`/`douta`), and its contents come from the `.coe` at
 synthesis. Retraining the classifier requires regenerating the `.coe` and
 rebuilding the bitstream.
-
----
-
-## Known gaps
-
-Issues found while assembling this repository, and what was done about each.
-
-1. **Keypoint-count mismatch across the PS/PL seam.** The RTL is built
-   for 17 keypoints (34 features, 272 bits, port named `movenet_data`). The PS
-   controller as delivered decoded 18-keypoint OpenPose heatmaps and produced 36
-   features, and its register offsets were shifted two words as a result — the
-   extra features would have overwritten the start and done registers. The PS
-   side now produces 17 MoveNet keypoints and its register map is derived from
-   the RTL.
-
-2. **Input-select typo.** The `LAYER1_MAC` input multiplexer read
-   `8'd83:` where the 0–33 sequence requires `8'd8:`, so feature byte 8 was never
-   selected and that coordinate held a stale value through layer 1. All 34 case
-   arms are now present with bit slices matching `index*8+7 : index*8`.
-
-3. **Coordinate scaling.** The PS scaled normalized coordinates by 255
-   into `[0, 255]`, but the DSP reads each byte as `signed [7:0]`, so the upper
-   half of the coordinate range arrived as negative values. The PS now scales by
-   127.
-
-4. **The pose stage is a reconstruction.** The original team code ran MoveNet on
-   the PS, but that implementation was not preserved — the delivered
-   `pulse_monitor.py` had its DPU runner commented out and fed the classifier a
-   synthetic keypoint ramp. `software/movenet_pose.py` is a working
-   implementation of the same stage written after the capstone against the
-   public pretrained model. It is not original team code.

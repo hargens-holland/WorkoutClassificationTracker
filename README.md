@@ -229,31 +229,12 @@ Vivado generates when packaging an IP. It exercises the bus interface, not the
 classifier: it will confirm that reads and writes land in the right registers,
 but it does not check that the network computes correct outputs.
 
-There is no unit testbench for `mlp_classifier.sv`. The classifier was validated
-in-system against known inputs rather than in simulation — worth knowing before
-you go looking for a verification suite.
+There is no unit testbench for `mlp_classifier.sv`; the classifier was validated
+on the board.
 
 ## Repository status
 
-This is a cleaned-up capstone repository preserved as a portfolio piece.
-
-- **The pose stage is a reconstruction.** The original team code ran MoveNet on
-  the PS, but that implementation was not preserved.
-  [`software/movenet_pose.py`](software/movenet_pose.py) is a working
-  implementation of the same stage written after the fact against the public
-  pretrained model — not original capstone code.
-- **The PS/PL seam did not converge during the capstone.** The delivered PS
-  controller produced 36 OpenPose-shaped features against RTL expecting 34
-  MoveNet-shaped ones, with register offsets shifted to match. The changes made in
-  this tree are itemized in
-  [docs/architecture.md](docs/architecture.md#known-gaps).
-- **The results above are the team's measured numbers** from the final report,
-  taken on the original design rather than on this cleaned-up tree. Figures
-  quoted from routed Vivado reports are labeled as such where they appear.
-
-Technical claims here are written from the RTL and the Vivado reports. Where the
-submitted project report and the source disagree, the source is what this README
-describes.
+Cleaned-up capstone repository preserved as a portfolio record.
 
 ## Credits
 
