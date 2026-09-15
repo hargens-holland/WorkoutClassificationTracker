@@ -4,6 +4,11 @@ Real-time exercise recognition and rep counting from a live camera feed, with po
 estimation and a quantized neural-network classifier running entirely on-device —
 no cloud, no GPU, no video ever leaving the board.
 
+![Live demo: a squat being classified on the AUP-ZU3 — the display shows the MoveNet skeleton overlay, class SQUAT at 92% confidence, per-exercise rep counts, and 10.8 FPS](docs/img/demo-squat.jpg)
+
+*Demo day: the board classifies a squat from the USB camera and overlays the
+skeleton, class, confidence, rep tally, and frame rate on the DisplayPort output.*
+
 ```mermaid
 flowchart TB
     subgraph PS["PS — ARM Cortex-A53, PYNQ Linux"]
