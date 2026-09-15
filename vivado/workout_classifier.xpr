@@ -4,7 +4,7 @@
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
 <!-- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.   -->
 
-<Project Product="Vivado" Version="7" Minor="71" Path="C:/Users/ryank/Desktop/ece554_final_project/workout_classifier/workout_classifier.xpr">
+<Project Product="Vivado" Version="7" Minor="71">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="a16562fd25734aee9e48d98b95f92125"/>
@@ -48,7 +48,6 @@
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo/mlp_controller_1_0"/>
-    <Option Name="IPRepoPath" Val="$PPRDIR/../../AUP-ZU3/DPUCZDX8G_ip_repo_VAI_v3.0"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
     <Option Name="IPDefaultOutputPath" Val="$PGENDIR/sources_1"/>
     <Option Name="IPCachePermission" Val="read"/>

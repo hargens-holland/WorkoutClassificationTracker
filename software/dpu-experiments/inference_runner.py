@@ -119,7 +119,7 @@ def top5_resnet(output_bufs: list):
 def parse_keypoints(output_bufs: list, output_scale: float = 1.0) -> np.ndarray:
     """
     Parse MoveNet output into [17, 3] keypoint array.
-    Adjust reshape dims once Person A confirms output tensor shape.
+    Adjust reshape dims to match the compiled model's output tensor shape.
 
     Args:
         output_bufs:   raw output from run_inference()

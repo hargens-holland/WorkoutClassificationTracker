@@ -15,7 +15,7 @@ Model:
     MoveNet SinglePose Thunder  (256x256) — more accurate, slower
 
 Download the TFLite model to models/ before use:
-    https://tfhub.dev/google/lite-model/movenet/singlepose/lightning/tflite/int8/4
+    https://www.kaggle.com/models/google/movenet  (see models/README.md)
 
 Runtime: tflite_runtime if present, otherwise tensorflow.lite.
 """
